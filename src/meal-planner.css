@@ -1,0 +1,386 @@
+/* 献立提案サイト用CSS */
+
+/* リセットとベーススタイル */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* メインコンテナ */
+.meal-planner {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #fef7ed, #fef2f2);
+  padding: 1rem;
+}
+
+.meal-planner-container {
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+/* ヘッダー */
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.header-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.header-icon {
+  width: 2rem;
+  height: 2rem;
+  color: #ea580c;
+}
+
+.header-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.header-subtitle {
+  color: #4b5563;
+}
+
+/* カードスタイル */
+.card {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* 設定セクション */
+.preferences-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.preferences-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .preferences-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.form-select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  background-color: white;
+  font-size: 1rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.form-select:focus {
+  outline: none;
+  ring: 2px solid #f97316;
+  border-color: transparent;
+}
+
+/* メイン提案ボタン */
+.generate-button-container {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.generate-button {
+  background: linear-gradient(to right, #f97316, #dc2626);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 1.125rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.generate-button:hover {
+  background: linear-gradient(to right, #ea580c, #b91c1c);
+  transform: scale(1.05);
+}
+
+.generate-button-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* 料理表示カード */
+.meal-card {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #f97316;
+}
+
+.meal-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.75rem;
+}
+
+.meal-description {
+  color: #4b5563;
+  margin-bottom: 1rem;
+}
+
+.meal-info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .meal-info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.meal-info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.meal-info-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #f97316;
+}
+
+.meal-info-text {
+  color: #374151;
+}
+
+.ingredients-section {
+  margin-top: 1rem;
+}
+
+.ingredients-title {
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.ingredients-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.ingredient-tag {
+  background-color: #fed7aa;
+  color: #9a3412;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+}
+
+/* 現在の設定表示 */
+.settings-card {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+}
+
+.settings-title {
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.settings-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.settings-tag {
+  background-color: #f3f4f6;
+  color: #374151;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+}
+
+/* ユーティリティクラス */
+.hidden {
+  display: none;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-3 {
+  margin-bottom: 0.75rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.p-6 {
+  padding: 1.5rem;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 640px) {
+  .meal-planner {
+    padding: 0.5rem;
+  }
+
+  .header-title {
+    font-size: 1.5rem;
+  }
+
+  .generate-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .meal-title {
+    font-size: 1.25rem;
+  }
+}
+
+/* アニメーション */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.meal-card {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* フォーカス状態の改善 */
+.generate-button:focus,
+.form-select:focus {
+  outline: 2px solid #f97316;
+  outline-offset: 2px;
+}
+
+/* ダークモード対応（オプション） */
+@media (prefers-color-scheme: dark) {
+  .meal-planner {
+    background: linear-gradient(to bottom right, #1f2937, #111827);
+  }
+
+  .card,
+  .meal-card,
+  .settings-card {
+    background-color: #374151;
+    color: #f9fafb;
+  }
+
+  .header-title,
+  .preferences-title,
+  .meal-title,
+  .ingredients-title,
+  .settings-title {
+    color: #f9fafb;
+  }
+
+  .header-subtitle,
+  .meal-description {
+    color: #d1d5db;
+  }
+
+  .form-select {
+    background-color: #4b5563;
+    border-color: #6b7280;
+    color: #f9fafb;
+  }
+
+  .settings-tag {
+    background-color: #4b5563;
+    color: #d1d5db;
+  }
+}

@@ -1,0 +1,81 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8080
+  description: Generated server url
+paths:
+  /api/testTables/{id}:
+    get:
+      tags:
+      - test-table-rest-controller
+      operationId: getTestTable
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TestTable'
+  /api/testTables:
+    get:
+      tags:
+      - test-table-rest-controller
+      operationId: getTestTables
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TestTable'
+    post:
+      tags:
+      - test-table-rest-controller
+      operationId: add
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TestTableRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TestTable'
+components:
+  schemas:
+    TestTableRequest:
+      required:
+      - name
+      type: object
+      properties:
+        name:
+          type: string
+    TestTable:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time

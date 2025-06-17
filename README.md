@@ -5,7 +5,7 @@
 ・material-ui ※UI用  
 ・react-hook-form ※formのパーツ兼validation  
 ・zod ※validation  
-・（未）tanstack-query(orval) (httpClient)  
+・tanstack-query　※httpClient
 ・storybook　※デザイン確認
 
 # フロントサイド立ち上げ

@@ -5,6 +5,12 @@ import { useForm } from 'react-hook-form';
 import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
+import axios from 'axios'
+import MealPlanner from './meal-planner';
+import './meal-planner.css';
+import TestTableForm from './components/pages/TestTableForm';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import TestTableForm2 from './components/pages/TestTableForm2';
 
 function App() {
   // zod schema
@@ -25,11 +31,22 @@ function App() {
   const onSubmit = (data: any) => console.log(data);
   console.log(errors);
 
+  // // 通信
+  // axios.get("http://localhost:8080/api/testTables")
+  //   .then((results) => {
+  //     console.log(results.data);
+  //   })
+  //   .catch((error) => {
+  //     console.log('失敗');
+  //     console.log(error.status);
+  //   });
 
-
+  /*
   return (
     <>
-      <AccessAlarmIcon>アイコン</AccessAlarmIcon>
+
+      <AccessAlarmIcon></AccessAlarmIcon>アイコン
+      <MealPlanner></MealPlanner>
       {/* 改行で
       <div><AccessAlarmIcon />入力フォーム</div>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -39,7 +56,6 @@ function App() {
 
         <input type="submit" />
       </form>
-*/}
 
       {/* zod sample}
       <div className="App">
@@ -58,9 +74,18 @@ function App() {
           <button type="submit">ログイン</button>
         </form>
       </div>
-      */}
     </>
   );
+}*/
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MealPlanner />} />
+        <Route path="/add/:id" element={<TestTableForm2 />} />
+      </Routes>
+    </BrowserRouter>
+  );
+
 }
 
 export default App;
