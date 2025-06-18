@@ -70,11 +70,6 @@ const TestTableFormTemplate: React.FC<TestTableFormTemplateProps> = (props: Test
                 )}
             >
                 <StyledPaper variant="outlined">
-                    {/* 
-                    <Item>
-                        <input {...register("name")} />
-                    </Item>
-*/}
                     <Item>
                         <TextFields testTables={props.testTables} />
                     </Item>

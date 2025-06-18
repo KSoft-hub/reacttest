@@ -21,11 +21,11 @@ const TextFields: React.FC<TextFieldsProps> = (props: TextFieldsProps) => {
                 <TextField
                     label="Text field"
                     name="name"
-                    inputProps={{ maxLength: 30 }}
+                    inputProps={{ maxLength: 25 }}
                     error={!!formState.errors.name}
                     helperText={formState.errors.name?.message}
                     fullWidth={true}
-                    displayCounter={true}
+                    displayCounter={false}
                 />
             </Item>
         </>
