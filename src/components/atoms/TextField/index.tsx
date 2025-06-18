@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { FormHelperText, TextField as MuiTextField } from '@material-ui/core'
-import { TextFieldProps as MuiTextFieldProps } from '@material-ui/core/TextField/TextField'
+import { FormHelperText, TextField as MuiTextField } from '@mui/material'
+import { TextFieldProps as MuiTextFieldProps } from '@mui/material/TextField'
 import styled from '@emotion/styled'
+import { Controller, useFormContext } from 'react-hook-form'
 
 export type TextFieldProps = {
     displayCounter?: boolean
@@ -12,11 +13,16 @@ const TextField: React.FC<TextFieldProps> = ({
     displayCounter = false,
     ...props
 }: TextFieldProps) => {
+    const { register, formState, control } = useFormContext()
     const [length, setLength] = useState(0)
     return (
         <>
+
             <MuiTextField
-                {...props}
+                label="Text field"
+                name={`${props.name}`}
+                inputProps={{ maxLength: 31 }}
+                fullWidth={true}
                 onChange={(e) => {
                     setLength(e.target?.value?.length ?? 0)
                     if (props.onChange !== undefined) {
@@ -24,6 +30,8 @@ const TextField: React.FC<TextFieldProps> = ({
                     }
                 }}
             />
+
+
             <HelperTextDiv>
                 {!!helperText && <ErrorText error={true}>{helperText}</ErrorText>}
                 {displayCounter && !!props.inputProps?.maxLength && (

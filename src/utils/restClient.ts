@@ -20,6 +20,6 @@ axios.interceptors.response.use(
     }
 )
 
-const testTableApi = TestTableRestControllerApiFactory(new Configuration(), '', axiosInstance)
+const testTableApi = TestTableRestControllerApiFactory(new Configuration({ basePath: "http://localhost:8080" }), '', axiosInstance)
 
 export default testTableApi

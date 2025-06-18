@@ -7,10 +7,12 @@ import {
 } from '../../../types/typescript-axios'
 import { useSnackbar } from 'notistack'
 import { useNavigate, useParams } from "react-router-dom";
+import axios from 'axios'
 
 
 const TestTableForm: React.FC = () => {
     const [initialized, setInitialized] = useState(false)
+
     const [defaultValues, setDefaultValues] = useState<TestTableFormTypes>({
         name: '',
     })
@@ -20,6 +22,7 @@ const TestTableForm: React.FC = () => {
     let history = useNavigate();
     const { id } = useParams();
 
+    // 全件検索後、idよりテストテーブルを取得し、TestTablesにセットする
     useEffect(() => {
         TestTableApi
             .getTestTables()
@@ -32,9 +35,12 @@ const TestTableForm: React.FC = () => {
                     variant: 'error'
                 })
             })
-    })
+
+
+    }, [])
 
     useEffect(() => {
+        // 基本ここにははいらないはず
         if (!id) {
             setInitialized(true)
             return
@@ -42,6 +48,7 @@ const TestTableForm: React.FC = () => {
         TestTableApi
             .getTestTable(Number(id))
             .then((response) => {
+                console.log("★apiの情報をセット" + response.data.name)
                 setDefaultValues({
                     name: response.data.name ?? defaultValues.name,
                 })
@@ -52,14 +59,13 @@ const TestTableForm: React.FC = () => {
                     variant: 'error'
                 })
             })
-    }, [
-        defaultValues.name,
-        enqueueSnackbar,
-        id
+
+    }, [defaultValues.name, id
     ])
 
     const handleClickSave = useCallback(
         (data: TestTableFormTypes) => {
+            console.log("押された：" + data.name);
             if (saveProcessing.current) {
                 return
             }
@@ -129,6 +135,7 @@ const TestTableForm: React.FC = () => {
             onClickDelete={handleClickDelete}
         />
     ) : null
+
 }
 
 export default TestTableForm

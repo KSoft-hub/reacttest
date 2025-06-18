@@ -1,15 +1,17 @@
 import React, { useState, useRef } from 'react'
-import { Button, Paper } from '@material-ui/core'
+import { Button, Paper } from '@mui/material'
 import styled from 'styled-components'
 import ConfirmationModal from '../../molecules/ConfirmationModal'
 import { FormProvider, useForm } from 'react-hook-form'
-import TextField from '../../atoms/TextFields'
+import TextField from '../../atoms/TextField'
 import { TestTable } from '../../../types/typescript-axios'
 import { useSnackbar } from 'notistack'
 import { validationSchema } from '../../../utils/validationSchema'
 
 import { useFormContext } from 'react-hook-form'
+import TextFields from '../../organisms/TextFields'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { dataTagErrorSymbol } from '@tanstack/react-query'
 
 export type TestTableFormTypes = {
     name: string
@@ -25,20 +27,21 @@ export interface TestTableFormTemplateProps {
 }
 
 const TestTableFormTemplate: React.FC<TestTableFormTemplateProps> = (props: TestTableFormTemplateProps) => {
+    // const {
+    //     reset,
+    //     control,
+    //     handleSubmit,
+    //     formState: { errors },
+    // } = useForm<TestTableFormTypes>({
+    //     defaultValues: props.defaultValues,
+    //     shouldFocusError: false,
+    //     resolver: zodResolver(validationSchema)
+    // })
     const methods = useForm<TestTableFormTypes>({
         defaultValues: props.defaultValues,
         shouldFocusError: false,
         resolver: zodResolver(validationSchema)
     })
-    // const { register } = useFormContext<any>()
-    // const {
-    //     register,
-    //     watch,
-    //     handleSubmit,
-    //     formState: { errors },
-    // } = useForm<TestTableFormTypes>({
-    //     defaultValues: props.defaultValues, shouldFocusError: false
-    // });
 
 
     const [openSaveModal, setOpenSaveModal] = useState(false)
@@ -46,11 +49,16 @@ const TestTableFormTemplate: React.FC<TestTableFormTemplateProps> = (props: Test
     const [data, setData] = useState<TestTableFormTypes>()
     const { enqueueSnackbar } = useSnackbar()
 
+
     return (
         <FormProvider {...methods}>
             <form
                 onSubmit={methods.handleSubmit(
                     (data) => {
+                        console.log(data)
+                        enqueueSnackbar('Please check your input', {
+                            variant: 'error'
+                        })
                         setData(data)
                         setOpenSaveModal(true)
                     },
@@ -62,16 +70,13 @@ const TestTableFormTemplate: React.FC<TestTableFormTemplateProps> = (props: Test
                 )}
             >
                 <StyledPaper variant="outlined">
+                    {/* 
                     <Item>
-                        <TextField
-                            label="Text field"
-                            name="name"
-                            inputProps={{ maxLength: 30 }}
-                            error={!!methods.formState.errors.name}
-                            helperText={methods.formState.errors.name?.message}
-                            fullWidth={true}
-                            displayCounter={true}
-                        />
+                        <input {...register("name")} />
+                    </Item>
+*/}
+                    <Item>
+                        <TextFields testTables={props.testTables} />
                     </Item>
                 </StyledPaper>
                 <ButtonContainer>
@@ -105,6 +110,7 @@ const TestTableFormTemplate: React.FC<TestTableFormTemplateProps> = (props: Test
                 open={openDeleteModal}
             />
         </FormProvider>
+
     )
 }
 

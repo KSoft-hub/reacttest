@@ -10,7 +10,8 @@ import MealPlanner from './meal-planner';
 import './meal-planner.css';
 import TestTableForm from './components/pages/TestTableForm';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import TestTableForm2 from './components/pages/TestTableForm2';
+import TestTableForm2 from './components/pages/TestTableForm';
+import Test from './Test';
 
 function App() {
   // zod schema
@@ -80,8 +81,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MealPlanner />} />
-        <Route path="/add/:id" element={<TestTableForm2 />} />
+        <Route path="/" element={<Test />} />
+        <Route path="/add/:id" element={<TestTableForm />} />
       </Routes>
     </BrowserRouter>
   );
