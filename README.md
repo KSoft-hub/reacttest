@@ -1,23 +1,22 @@
-# 前提
-以下の検証  
-・react  
-・TypeScript  
-・material-ui ※UI用  
-・react-hook-form ※formのパーツ兼validation  
-・zod ※validation  
-・tanstack-query　※httpClient
-・storybook　※デザイン確認
-・gradle ※build用
+# Prerequisites
+This project uses:  
+- React  
+- TypeScript  
+- Material-UI (for UI components)  
+- react-hook-form (for form parts and validation)  
+- Zod (for validation)  
+- TanStack Query (HttpClient)  
+- Storybook (design review)
+- Gradle (for building)
 
-# フロントサイド立ち上げ
-最新化  
-rootフォルダで、`yarn` ※依存関係最新化    
-実行  
-rootフォルダで、`yarn start`  
-画面確認は`http://localhost:3000`  
+# Starting the Frontend
+Update dependencies:  
+In the root folder, run `yarn` to update dependencies.  
+To start the application, run `yarn start` in the root folder.  
+You can access the app at `http://localhost:3000`.
 
-# storybook立ち上げ
-rootフォルダで、`yarn storybook`  
-画面確認は`http://localhost:6006`  
+# Starting Storybook
+In the root folder, run `yarn storybook`.  
+You can view Storybook at `http://localhost:6006`.
 
-※ターミナルは別で立ち上げすること  
+*Note: Please use a separate terminal for running Storybook.*
