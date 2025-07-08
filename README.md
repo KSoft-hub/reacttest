@@ -7,6 +7,7 @@
 ・zod ※validation  
 ・tanstack-query　※httpClient
 ・storybook　※デザイン確認
+・gradle ※build用
 
 # フロントサイド立ち上げ
 最新化  
