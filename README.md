@@ -7,6 +7,7 @@ This project uses:
 - Zod (for validation)  
 - TanStack Query (HttpClient)  
 - Storybook (design review)
+- Gradle (for building)
 
 # Starting the Frontend
 Update dependencies:  
